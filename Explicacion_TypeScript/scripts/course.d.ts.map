@@ -1,0 +1,1 @@
+{"version":3,"file":"course.d.ts","sourceRoot":"","sources":["../course.ts"],"names":[],"mappings":"AACA,qBAAa,MAAM;IACjB,IAAI,EAAE,MAAM,CAAC;IACb,OAAO,EAAE,MAAM,CAAC;IAChB,SAAS,EAAE,MAAM,CAAC;gBAEN,IAAI,EAAE,MAAM,EAAE,SAAS,EAAE,MAAM,EAAE,OAAO,EAAE,MAAM;CAK7D"}
