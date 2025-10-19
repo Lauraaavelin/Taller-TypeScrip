@@ -86,7 +86,7 @@ const tabla: HTMLElement = document.getElementById('datos')!;
 
 import { Estudiante } from './estudiante.js';
 function tablaEstudiante(estudiante: Estudiante) {
-  // Asegúrate de que el tbody tenga id="datos"
+  
   const atributos = [
     ['Código', estudiante.codigo],
     ['Cédula', estudiante.cedulo],
