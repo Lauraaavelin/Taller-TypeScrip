@@ -16,7 +16,7 @@ ponerValores(series);
 function ponerValores(series) {
     clearTable();
     series.forEach(function (s) {
-        var nombreHTML = "<a href=\"#\" class=\"nombre-serie\" data-id=\"".concat(s.numero, "\">").concat(s.nombre, "</a>");
+        var nombreHTML = "<a href=\"#\" class=\"nombre-serie\" reconocer=\"".concat(s.numero, "\">").concat(s.nombre, "</a>");
         var fila = document.createElement("tr");
         fila.innerHTML = "<td>".concat(s.numero, "</td>\n                         <td>").concat(nombreHTML, "</td>\n                         <td>").concat(s.canal, "</td>\n                         <td>").concat(s.temporadas, "</td>");
         bodyTabla.appendChild(fila);
@@ -48,7 +48,7 @@ function Escuchar(series) {
     enlaces.forEach(function (enlace) {
         enlace.addEventListener('click', function (evento) {
             evento.preventDefault(); // evita que recargue la página
-            var id = Number(evento.target.getAttribute('data-id'));
+            var id = Number(evento.target.getAttribute('reconocer'));
             var serieSeleccionada = series.find(function (s) { return s.numero === id; });
             if (serieSeleccionada) {
                 crearTarjeta(serieSeleccionada);

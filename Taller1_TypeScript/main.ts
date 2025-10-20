@@ -33,7 +33,7 @@ function ponerValores(series: Serie[]):void{
     clearTable();
     series.forEach(s=>{
         
-    let nombreHTML = `<a href="#" class="nombre-serie" data-id="${s.numero}">${s.nombre}</a>`;
+    let nombreHTML = `<a href="#" class="nombre-serie" reconocer="${s.numero}">${s.nombre}</a>`;
          let fila= document.createElement("tr");
     fila.innerHTML=`<td>${s.numero}</td>
                          <td>${nombreHTML}</td>
@@ -86,7 +86,7 @@ function Escuchar(series: Serie[]): void {
   enlaces.forEach((enlace) => {
     enlace.addEventListener('click', (evento) => {
       evento.preventDefault(); // evita que recargue la página
-      const id = Number((evento.target as HTMLElement).getAttribute('data-id'));
+      const id = Number((evento.target as HTMLElement).getAttribute('reconocer'));
 
       const serieSeleccionada = series.find((s) => s.numero === id);
       if (serieSeleccionada) {
