@@ -1,13 +1,13 @@
 
 
 export class Serie {
-  numero: number
-  nombre: string;
-  canal: string;
-  temporadas: number;
-  descripcion: string;
-  link:string;
-  imagen: string;
+  public numero: number
+  public nombre: string;
+  public canal: string;
+  public temporadas: number;
+  public descripcion: string;
+  public link:string;
+  public imagen: string;
 
   constructor(num:number,nom:string,can:string,temp:number, des:string,link:string,imag:string){
     

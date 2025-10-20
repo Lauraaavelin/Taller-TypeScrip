@@ -1,1 +1,1 @@
-{"version":3,"file":"datosSeries.d.ts","sourceRoot":"","sources":["../datosSeries.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,SAAS,CAAC;AAEhC,eAAO,MAAM,MAAM,SAkBhB,CAAC"}
+{"version":3,"file":"datosSeries.d.ts","sourceRoot":"","sources":["../datosSeries.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,SAAS,CAAC;AAEhC,eAAO,MAAM,MAAM,EAAC,KAAK,EAkBtB,CAAC"}
