@@ -27,18 +27,25 @@ const series:Serie[]= [
 
 ponerValores(series);
 
+
+
 function ponerValores(series: Serie[]):void{
     clearTable();
     series.forEach(s=>{
+        
+    let nombreHTML = `<a href="#" class="nombre-serie" data-id="${s.numero}">${s.nombre}</a>`;
          let fila= document.createElement("tr");
     fila.innerHTML=`<td>${s.numero}</td>
-                         <td>${s.nombre}</td>
+                         <td>${nombreHTML}</td>
                          <td>${s.canal}</td>
                          <td>${s.temporadas}</td>`;
     
     bodyTabla.appendChild(fila);
     });
    titulo.textContent=`Promedio de temporadas: ${totalTemporadas(series)}`;
+
+    Escuchar(series);
+
 }
 function clearTable():void{
     if(bodyTabla){
@@ -55,4 +62,36 @@ function totalTemporadas(series: Serie[]):number{
     return pormedio;
 }
 
-    
+const contenedor: HTMLElement = document.getElementById('detalles')!;
+
+function crearTarjeta(serie: Serie) {
+  if (!contenedor) return;
+
+  contenedor.innerHTML = `
+    <div class="card">
+      <img src="${serie.imagen}" class="card-img-top" alt="${serie.nombre}" style="width:100%;">
+      <div class="card-body">
+        <h5 class="card-title">${serie.nombre}</h5>
+        <p class="card-text">${serie.descripcion}</p>
+        <p><a href="${serie.link}" target="_blank">${serie.link}</a></p>
+      </div>
+    </div>
+  `;
+}
+
+
+function Escuchar(series: Serie[]): void {
+  const enlaces = document.querySelectorAll('.nombre-serie');
+
+  enlaces.forEach((enlace) => {
+    enlace.addEventListener('click', (evento) => {
+      evento.preventDefault(); // evita que recargue la página
+      const id = Number((evento.target as HTMLElement).getAttribute('data-id'));
+
+      const serieSeleccionada = series.find((s) => s.numero === id);
+      if (serieSeleccionada) {
+        crearTarjeta(serieSeleccionada);
+      }
+    });
+  });
+}

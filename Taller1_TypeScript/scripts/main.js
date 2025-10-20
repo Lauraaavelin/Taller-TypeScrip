@@ -16,11 +16,13 @@ ponerValores(series);
 function ponerValores(series) {
     clearTable();
     series.forEach(function (s) {
+        var nombreHTML = "<a href=\"#\" class=\"nombre-serie\" data-id=\"".concat(s.numero, "\">").concat(s.nombre, "</a>");
         var fila = document.createElement("tr");
-        fila.innerHTML = "<td>".concat(s.numero, "</td>\n                         <td>").concat(s.nombre, "</td>\n                         <td>").concat(s.canal, "</td>\n                         <td>").concat(s.temporadas, "</td>");
+        fila.innerHTML = "<td>".concat(s.numero, "</td>\n                         <td>").concat(nombreHTML, "</td>\n                         <td>").concat(s.canal, "</td>\n                         <td>").concat(s.temporadas, "</td>");
         bodyTabla.appendChild(fila);
     });
     titulo.textContent = "Promedio de temporadas: ".concat(totalTemporadas(series));
+    Escuchar(series);
 }
 function clearTable() {
     if (bodyTabla) {
@@ -34,5 +36,24 @@ function totalTemporadas(series) {
     series.forEach(function (serie) { return total = total + serie.temporadas; });
     var pormedio = total / series.length;
     return pormedio;
+}
+var contenedor = document.getElementById('detalles');
+function crearTarjeta(serie) {
+    if (!contenedor)
+        return;
+    contenedor.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(serie.imagen, "\" class=\"card-img-top\" alt=\"").concat(serie.nombre, "\" style=\"width:100%;\">\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">").concat(serie.nombre, "</h5>\n        <p class=\"card-text\">").concat(serie.descripcion, "</p>\n        <p><a href=\"").concat(serie.link, "\" target=\"_blank\">").concat(serie.link, "</a></p>\n      </div>\n    </div>\n  ");
+}
+function Escuchar(series) {
+    var enlaces = document.querySelectorAll('.nombre-serie');
+    enlaces.forEach(function (enlace) {
+        enlace.addEventListener('click', function (evento) {
+            evento.preventDefault(); // evita que recargue la página
+            var id = Number(evento.target.getAttribute('data-id'));
+            var serieSeleccionada = series.find(function (s) { return s.numero === id; });
+            if (serieSeleccionada) {
+                crearTarjeta(serieSeleccionada);
+            }
+        });
+    });
 }
 //# sourceMappingURL=main.js.map
